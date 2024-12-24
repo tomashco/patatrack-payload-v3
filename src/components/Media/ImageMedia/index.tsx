@@ -33,6 +33,8 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let height: number | undefined
   let alt = altFromProps
   let src: StaticImageData | string = srcFromProps || ''
+  let focalX: number | undefined
+  let focalY: number | undefined
 
   if (!src && resource && typeof resource === 'object') {
     const {
@@ -41,11 +43,15 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
       height: fullHeight,
       url,
       width: fullWidth,
+      focalX: focalXFromResource,
+      focalY: focalYFromResource,
     } = resource
 
     width = fullWidth!
     height = fullHeight!
     alt = altFromResource || ''
+    focalX = focalXFromResource || 0
+    focalY = focalYFromResource || 0
 
     src = `${getClientSideURL()}${url}`
   }
@@ -67,6 +73,10 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         fill={fill}
         height={!fill ? height : undefined}
         placeholder="blur"
+        style={{
+          objectFit: 'cover',
+          objectPosition: `${focalX}% ${focalY}%`,
+        }}
         blurDataURL={placeholderBlur}
         priority={priority}
         quality={100}
