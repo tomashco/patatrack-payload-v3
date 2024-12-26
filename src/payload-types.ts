@@ -117,7 +117,7 @@ export interface Page {
                 } | null);
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'outline') | null;
+            appearance?: ('default' | 'outline' | 'link') | null;
           };
           id?: string | null;
         }[]
@@ -346,7 +346,7 @@ export interface CallToActionBlock {
               } | null);
           url?: string | null;
           label: string;
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'outline' | 'link') | null;
         };
         id?: string | null;
       }[]
@@ -393,14 +393,33 @@ export interface ContentBlock {
               } | null);
           url?: string | null;
           label: string;
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'outline' | 'link') | null;
         };
+        sectionLayout: SectionLayout;
         id?: string | null;
       }[]
     | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sectionLayout".
+ */
+export interface SectionLayout {
+  hideSection?: boolean | null;
+  backgroundColor?: string | null;
+  paddingTop: number;
+  paddingBottom: number;
+  breakpoints?:
+    | {
+        minWidth: number;
+        paddingTop: number;
+        paddingBottom: number;
+        id?: string | null;
+      }[]
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -885,10 +904,29 @@ export interface ContentBlockSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
+        sectionLayout?: T | SectionLayoutSelect<T>;
         id?: T;
       };
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sectionLayout_select".
+ */
+export interface SectionLayoutSelect<T extends boolean = true> {
+  hideSection?: T;
+  backgroundColor?: T;
+  paddingTop?: T;
+  paddingBottom?: T;
+  breakpoints?:
+    | T
+    | {
+        minWidth?: T;
+        paddingTop?: T;
+        paddingBottom?: T;
+        id?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
