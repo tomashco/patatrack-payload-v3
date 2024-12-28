@@ -1,0 +1,49 @@
+{
+  "name": "Patatrack",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "onCreateCommand": [".devcontainer/on-create-command.sh"],
+  "postAttachCommand": [".devcontainer/post-attach-command.sh"],
+  "shutdownAction": "stopCompose",
+  "mounts": [
+    {
+      "type": "bind",
+      "source": "/var/run/docker.sock",
+      "target": "/var/run/docker.sock"
+    },
+    "source=~/docker/volumes/yalc,target=/yalc,type=bind,consistency=cached"
+  ],
+  "workspaceFolder": "/workspaces/patatrack",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "os-provided",
+      "ppa": false
+    },
+    // "ghcr.io/msclock/features/gitlab-ci-local:0": {
+    //     "version": "latest"
+    // },
+    "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {
+      "version": "v2.35.0"
+    }
+  },
+  "forwardPorts": ["app:3000", "db:5433"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mkhl.direnv",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "eamodio.gitlens",
+        "cweijan.vscode-postgresql-client2",
+        "ChakrounAnas.turbo-console-log",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "direnv.path.executable": "/usr/local/bin/direnv"
+      }
+    }
+  }
+}

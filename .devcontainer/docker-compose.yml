@@ -1,0 +1,51 @@
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/base:bookworm
+    stdin_open: true
+    tty: true
+    volumes:
+      - ..:/workspaces/patatrack:cached
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '3000:3000'
+    environment:
+      DEV_CONTAINER: true
+      POSTGRES_PASSWORD: postgres
+      DB_HOST: db
+      S3_SCHEME: http://
+      S3_HOST: minio
+      S3_PORT: 9001
+      S3_BUCKET: patatrack-payload
+      S3_ACCESS_KEY_ID: XoWYaeveavMInWYQZcch
+      S3_SECRET_ACCESS_KEY: 3HwOFFRioVMf2myaJhuft2PTkIUIf5TkCUyRcQSY
+      S3_REGION: auto
+      PAYLOAD_PUBLIC_CLOUDFLARE_ENDPOINT: http://localhost:9001/patatrack-payload
+  db:
+    image: postgres:16
+    stdin_open: true
+    tty: true
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_DB: patatrack
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+      interval: 1s
+      timeout: 30s
+      retries: 3
+  minio:
+    image: bitnami/minio:2024.10.29-debian-12-r0
+    stdin_open: true
+    tty: true
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_DEFAULT_BUCKETS: patatrack-payload
+      MINIO_SERVER_ACCESS_KEY: XoWYaeveavMInWYQZcch
+      MINIO_SERVER_SECRET_KEY: 3HwOFFRioVMf2myaJhuft2PTkIUIf5TkCUyRcQSY

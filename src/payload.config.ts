@@ -92,6 +92,7 @@ export default buildConfig({
       acl: 'public-read',
       bucket: process.env.S3_BUCKET!,
       config: {
+        forcePathStyle: true,
         endpoint: process.env.PAYLOAD_PUBLIC_CLOUDFLARE_ENDPOINT || '',
         region: process.env.S3_REGION,
         credentials: {
