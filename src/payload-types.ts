@@ -315,6 +315,7 @@ export interface User {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  bgColor?: ('bg-patatrack-gold' | 'bg-patatrack-purple') | null;
   richText?: {
     root: {
       type: string;
@@ -360,6 +361,7 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  bgColor?: ('bg-patatrack-gold' | 'bg-patatrack-purple') | null;
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
@@ -395,31 +397,12 @@ export interface ContentBlock {
           label: string;
           appearance?: ('default' | 'outline' | 'link') | null;
         };
-        sectionLayout: SectionLayout;
         id?: string | null;
       }[]
     | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sectionLayout".
- */
-export interface SectionLayout {
-  hideSection?: boolean | null;
-  backgroundColor?: string | null;
-  paddingTop: number;
-  paddingBottom: number;
-  breakpoints?:
-    | {
-        minWidth: number;
-        paddingTop: number;
-        paddingBottom: number;
-        id?: string | null;
-      }[]
-    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -864,6 +847,7 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  bgColor?: T;
   richText?: T;
   links?:
     | T
@@ -888,6 +872,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
+  bgColor?: T;
   columns?:
     | T
     | {
@@ -904,29 +889,10 @@ export interface ContentBlockSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
-        sectionLayout?: T | SectionLayoutSelect<T>;
         id?: T;
       };
   id?: T;
   blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sectionLayout_select".
- */
-export interface SectionLayoutSelect<T extends boolean = true> {
-  hideSection?: T;
-  backgroundColor?: T;
-  paddingTop?: T;
-  paddingBottom?: T;
-  breakpoints?:
-    | T
-    | {
-        minWidth?: T;
-        paddingTop?: T;
-        paddingBottom?: T;
-        id?: T;
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

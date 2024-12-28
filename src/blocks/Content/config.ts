@@ -12,7 +12,7 @@ import {
 
 import { link } from '@/fields/link'
 import { MediaBlock } from '../MediaBlock/config'
-import { SECTION_LAYOUT } from '@/fields/sectionLayout'
+import { BG_PATATRACK } from '@/fields/bgPatatrack'
 
 const columnFields: Field[] = [
   {
@@ -102,22 +102,13 @@ const columnFields: Field[] = [
       },
     },
   }),
-  SECTION_LAYOUT({
-    paddingTop: 0,
-    breakpoints: [
-      {
-        minWidth: 767,
-        paddingTop: 0,
-        paddingBottom: 48,
-      },
-    ],
-  }),
 ]
 
 export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
   fields: [
+    BG_PATATRACK,
     {
       name: 'columns',
       type: 'array',

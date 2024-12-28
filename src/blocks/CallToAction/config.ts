@@ -8,11 +8,13 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '../../fields/linkGroup'
+import { BG_PATATRACK } from '@/fields/bgPatatrack'
 
 export const CallToAction: Block = {
   slug: 'cta',
   interfaceName: 'CallToActionBlock',
   fields: [
+    BG_PATATRACK,
     {
       name: 'richText',
       type: 'richText',

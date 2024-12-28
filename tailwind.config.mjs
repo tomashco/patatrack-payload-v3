@@ -89,6 +89,10 @@ export default {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        patatrack: {
+          purple: '#311955',
+          gold: '#d8ad2c',
+        },
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
