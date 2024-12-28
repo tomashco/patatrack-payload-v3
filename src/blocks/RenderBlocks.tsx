@@ -37,6 +37,7 @@ export const RenderBlocks: React.FC<{
               return (
                 <div
                   className="bg-patatrack-purple" // site default background color
+                  data-theme="dark" // fix theme to dark for all blocks
                   key={index}
                 >
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}

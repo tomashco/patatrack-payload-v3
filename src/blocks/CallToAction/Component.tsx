@@ -9,9 +9,15 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText, bg
   return (
     <div className={`${bgColor}`}>
       <div className="container">
-        <div className=" p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
+        <div className=" p-4 flex flex-col gap-8 items-center text-center">
           <div className="max-w-[48rem] flex items-center">
-            {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}
+            {richText && (
+              <RichText
+                className="mb-0 [&>h1]:text-[6.5rem] [&>h1]:font-['LemonMilk']"
+                data={richText}
+                enableGutter={false}
+              />
+            )}
           </div>
           <div className="flex flex-col gap-8">
             {(links || []).map(({ link }, i) => {
