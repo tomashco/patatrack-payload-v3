@@ -110,3 +110,28 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+.duotone {
+  background-color: #311955;
+}
+
+.duotone img {
+  filter: saturate(0.7);
+  mix-blend-mode: lighten;
+}
+
+.duotone::before {
+  background-color: #ffcf18;
+  position: absolute;
+  left: 0;
+  /* top: 0; */
+  content: '';
+  height: 100%;
+
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+
+
+  width: 100%;
+  z-index: 1;
+}

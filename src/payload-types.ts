@@ -123,6 +123,7 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
+    duotone?: boolean | null;
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
@@ -316,6 +317,8 @@ export interface User {
  */
 export interface CallToActionBlock {
   bgColor?: ('bg-patatrack-gold' | 'bg-patatrack-purple') | null;
+  duotone?: boolean | null;
+  media?: (number | null) | Media;
   richText?: {
     root: {
       type: string;
@@ -818,6 +821,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        duotone?: T;
       };
   layout?:
     | T
@@ -848,6 +852,8 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
   bgColor?: T;
+  duotone?: T;
+  media?: T;
   richText?: T;
   links?:
     | T

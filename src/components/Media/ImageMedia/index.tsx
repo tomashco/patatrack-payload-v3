@@ -24,6 +24,8 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     imgClassName,
     priority,
     resource,
+    duotone,
+    height: heightFromProps,
     size: sizeFromProps,
     src: srcFromProps,
     loading: loadingFromProps,
@@ -48,7 +50,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     } = resource
 
     width = fullWidth!
-    height = fullHeight!
+    height = heightFromProps || fullHeight!
     alt = altFromResource || ''
     focalX = focalXFromResource || 0
     focalY = focalYFromResource || 0
@@ -66,7 +68,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .join(', ')
 
   return (
-    <picture>
+    <picture className={cn(duotone && 'duotone')}>
       <NextImage
         alt={alt || ''}
         className={cn(imgClassName)}
@@ -76,6 +78,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         style={{
           objectFit: 'cover',
           objectPosition: `${focalX}% ${focalY}%`,
+          mixBlendMode: duotone ? 'unset' : undefined,
         }}
         blurDataURL={placeholderBlur}
         priority={priority}

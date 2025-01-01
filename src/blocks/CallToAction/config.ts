@@ -9,12 +9,21 @@ import {
 
 import { linkGroup } from '../../fields/linkGroup'
 import { BG_PATATRACK } from '@/fields/bgPatatrack'
+import { DUOTONE_FILTER } from '@/fields/duotoneFilter'
 
 export const CallToAction: Block = {
   slug: 'cta',
   interfaceName: 'CallToActionBlock',
   fields: [
     BG_PATATRACK,
+    DUOTONE_FILTER,
+    {
+      label: 'background image',
+      name: 'media',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+    },
     {
       name: 'richText',
       type: 'richText',

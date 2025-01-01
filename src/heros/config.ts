@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { DUOTONE_FILTER } from '@/fields/duotoneFilter'
 
 export const hero: Field = {
   name: 'hero',
@@ -67,6 +68,7 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
     },
+    DUOTONE_FILTER,
   ],
   label: false,
 }
