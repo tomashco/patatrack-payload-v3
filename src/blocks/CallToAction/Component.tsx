@@ -16,7 +16,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
 }) => {
   return (
     <div className={`${bgColor}`}>
-      {media && (
+      {media && typeof media === 'object' && (
         <div className={cn('absolute w-full h-[400px]', duotone && 'duotone')}>
           <Image
             src={media.url || ''}

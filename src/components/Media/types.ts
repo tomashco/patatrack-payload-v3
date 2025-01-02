@@ -8,7 +8,7 @@ export interface Props {
   className?: string
   fill?: boolean // for NextImage only
   height?: number
-  duotone: boolean
+  duotone?: boolean | null
   htmlElement?: ElementType | null
   imgClassName?: string
   onClick?: () => void
