@@ -6,6 +6,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { DUOTONE_FILTER } from '@/fields/duotoneFilter'
 
 export const FormBlock: Block = {
   slug: 'formBlock',
@@ -16,6 +17,14 @@ export const FormBlock: Block = {
       type: 'relationship',
       relationTo: 'forms',
       required: true,
+    },
+    DUOTONE_FILTER,
+    {
+      label: 'background image',
+      name: 'media',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
     },
     {
       name: 'enableIntro',

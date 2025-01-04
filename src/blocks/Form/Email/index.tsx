@@ -20,15 +20,20 @@ export const Email: React.FC<
 > = ({ name, defaultValue, errors, label, register, required: requiredFromProps, width }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>{label}</Label>
-      <Input
-        defaultValue={defaultValue}
-        id={name}
-        type="text"
-        {...register(name, { pattern: /^\S[^\s@]*@\S+$/, required: requiredFromProps })}
-      />
-
-      {requiredFromProps && errors[name] && <Error />}
+      <div className="flex gap-4">
+        <Label className="mt-[13px]" htmlFor={name}>
+          {label}
+        </Label>
+        <div className="flex flex-col flex-1">
+          <Input
+            defaultValue={defaultValue}
+            id={name}
+            type="text"
+            {...register(name, { pattern: /^\S[^\s@]*@\S+$/, required: requiredFromProps })}
+          />
+          {requiredFromProps && errors[name] && <Error />}
+        </div>
+      </div>
     </Width>
   )
 }

@@ -10,6 +10,7 @@ import {
 import { linkGroup } from '../../fields/linkGroup'
 import { BG_PATATRACK } from '@/fields/bgPatatrack'
 import { DUOTONE_FILTER } from '@/fields/duotoneFilter'
+import { TEXT_ALIGN } from '@/fields/textAlign'
 
 export const CallToAction: Block = {
   slug: 'cta',
@@ -24,6 +25,7 @@ export const CallToAction: Block = {
       relationTo: 'media',
       required: false,
     },
+    TEXT_ALIGN,
     {
       name: 'richText',
       type: 'richText',

@@ -319,6 +319,7 @@ export interface CallToActionBlock {
   bgColor?: ('bg-patatrack-gold' | 'bg-patatrack-purple') | null;
   duotone?: boolean | null;
   media?: (number | null) | Media;
+  textAlign?: ('text-left' | 'text-center' | 'text-right' | 'text-justify') | null;
   richText?: {
     root: {
       type: string;
@@ -457,6 +458,8 @@ export interface ArchiveBlock {
  */
 export interface FormBlock {
   form: number | Form;
+  duotone?: boolean | null;
+  media?: (number | null) | Media;
   enableIntro?: boolean | null;
   introContent?: {
     root: {
@@ -854,6 +857,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
   bgColor?: T;
   duotone?: T;
   media?: T;
+  textAlign?: T;
   richText?: T;
   links?:
     | T
@@ -929,6 +933,8 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  */
 export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
+  duotone?: T;
+  media?: T;
   enableIntro?: T;
   introContent?: T;
   id?: T;

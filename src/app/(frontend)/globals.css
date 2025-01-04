@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'LemonMilk';
+  font-family: 'LemonMilk Medium';
   src: url('/fonts/LEMONMILK-Medium.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LemonMilk Light';
+  src: url('/fonts/LEMONMILK-Light.otf');
   font-weight: normal;
   font-style: normal;
 }
@@ -62,7 +69,8 @@
   }
 
   [data-theme='dark'] {
-    --background: 0 0% 0%;
+    /* patatrack purple to hsl value */
+    --background: 264, 55%, 22%;
     --foreground: 210 40% 98%;
     --card: 0 0% 4%;
     --card-foreground: 210 40% 98%;
@@ -85,7 +93,7 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0, 0%, 15%, 0.5;
+    --border: 0, 100%, 100%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
 

@@ -10,6 +10,7 @@ import Image from 'next/image'
 export const CallToActionBlock: React.FC<CTABlockProps> = ({
   links,
   richText,
+  textAlign,
   bgColor,
   media,
   duotone,
@@ -40,16 +41,16 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
             media && 'flex-row items-end justify-between h-[400px]',
           )}
         >
-          <div className="max-w-[48rem] flex items-center">
+          <div className={`max-w-[48rem] flex items-center ${textAlign}`}>
             {richText && (
               <RichText
-                className="mb-0  lg:[&>h1]:text-[6.5rem] lg:[&>p]:text-[1.5rem] [&>h1]:font-['LemonMilk']"
+                className="mb-0 lg:[&>h1]:text-[6.5rem] lg:[&>p]:text-[1.5rem] [&>h1>a]:no-underline [&>h1]:font-['LemonMilk Medium'] [&>h1]:leading-none"
                 data={richText}
                 enableGutter={false}
               />
             )}
           </div>
-          <div className="flex flex-col gap-8 lg:[&>a]:text-[1.5rem] [&>a]:font-['LemonMilk']">
+          <div className="flex flex-col gap-8 lg:[&>a]:text-[1.5rem] [&>a]:font-['LemonMilk Medium']">
             {(links || []).map(({ link }, i) => {
               return <CMSLink key={i} size="lg" {...link} />
             })}

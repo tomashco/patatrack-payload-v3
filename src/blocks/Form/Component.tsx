@@ -11,6 +11,8 @@ import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical
 import { buildInitialFormState } from './buildInitialFormState'
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
+import Image from 'next/image'
+import { cn } from '@/utilities/cn'
 
 export type Value = unknown
 
@@ -26,6 +28,11 @@ export type FormBlockType = {
   blockName?: string
   blockType?: 'formBlock'
   enableIntro: boolean
+  media?: {
+    alt?: string
+    url?: string
+  }
+  duotone?: boolean
   form: FormType
   introContent?: SerializedEditorState
 }
@@ -40,6 +47,8 @@ export const FormBlock: React.FC<
     form: formFromProps,
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
     introContent,
+    media,
+    duotone,
   } = props
 
   const formMethods = useForm({
@@ -125,48 +134,76 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="container lg:max-w-[48rem]">
-      {enableIntro && introContent && !hasSubmitted && (
-        <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
+    <div data-theme="dark" className="bg-patatrack-purple h-[400px] flex items-center">
+      {media && typeof media === 'object' && (
+        <div className={cn('absolute w-full h-[400px]', duotone && 'duotone')}>
+          <Image
+            src={media.url || ''}
+            alt={media.alt || ''}
+            sizes="100vw"
+            fill
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+            width={0}
+            height={0}
+          />
+        </div>
       )}
-      <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
-        <FormProvider {...formMethods}>
-          {!isLoading && hasSubmitted && confirmationType === 'message' && (
-            <RichText data={confirmationMessage} />
-          )}
-          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-          {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
-          {!hasSubmitted && (
-            <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className="mb-4 last:mb-0">
-                {formFromProps &&
-                  formFromProps.fields &&
-                  formFromProps.fields?.map((field, index) => {
-                    const Field: React.FC<any> = fields?.[field.blockType]
-                    if (Field) {
-                      return (
-                        <div className="mb-6 last:mb-0 text-black dark:text-white" key={index}>
-                          <Field
-                            form={formFromProps}
-                            {...field}
-                            {...formMethods}
-                            control={control}
-                            errors={errors}
-                            register={register}
-                          />
-                        </div>
-                      )
-                    }
-                    return null
-                  })}
-              </div>
+      <div className="container lg:max-w-[48rem] flex flex-col">
+        {enableIntro && introContent && !hasSubmitted && (
+          <RichText
+            className="mb-8 lg:mb-12 relative z-10"
+            data={introContent}
+            enableGutter={false}
+          />
+        )}
+        <div className="p-4 lg:p-6 relative">
+          <FormProvider {...formMethods}>
+            {!isLoading && hasSubmitted && confirmationType === 'message' && (
+              <RichText data={confirmationMessage} />
+            )}
+            {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+            {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+            {!hasSubmitted && (
+              <form
+                className="flex flex-col items-center relative z-10"
+                id={formID}
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <div className="w-full mb-4 last:mb-0">
+                  {formFromProps &&
+                    formFromProps.fields &&
+                    formFromProps.fields?.map((field, index) => {
+                      const Field: React.FC<any> = fields?.[field.blockType]
+                      if (Field) {
+                        return (
+                          <div className="mb-6 last:mb-0 text-black dark:text-white" key={index}>
+                            <Field
+                              form={formFromProps}
+                              {...field}
+                              {...formMethods}
+                              control={control}
+                              errors={errors}
+                              register={register}
+                            />
+                          </div>
+                        )
+                      }
+                      return null
+                    })}
+                </div>
 
-              <Button form={formID} type="submit" variant="default">
-                {submitButtonLabel}
-              </Button>
-            </form>
-          )}
-        </FormProvider>
+                <Button className="w-fit" form={formID} type="submit" variant="default">
+                  {submitButtonLabel}
+                </Button>
+              </form>
+            )}
+          </FormProvider>
+          <div className="bg-patatrack-purple opacity-40 absolute w-full h-full top-0 left-0"></div>
+        </div>
       </div>
     </div>
   )

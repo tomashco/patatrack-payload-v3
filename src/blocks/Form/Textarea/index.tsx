@@ -30,16 +30,20 @@ export const Textarea: React.FC<
 }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>{label}</Label>
-
-      <TextAreaComponent
-        defaultValue={defaultValue}
-        id={name}
-        rows={rows}
-        {...register(name, { required: requiredFromProps })}
-      />
-
-      {requiredFromProps && errors[name] && <Error />}
+      <div className="flex gap-4">
+        <Label className="mt-[13px]" htmlFor={name}>
+          {label}
+        </Label>
+        <div className="flex flex-col flex-1">
+          <TextAreaComponent
+            defaultValue={defaultValue}
+            id={name}
+            rows={rows}
+            {...register(name, { required: requiredFromProps })}
+          />
+          {requiredFromProps && errors[name] && <Error />}
+        </div>
+      </div>
     </Width>
   )
 }
