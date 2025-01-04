@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -7,6 +7,7 @@ export default {
     './src/**/*.{ts,tsx}',
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
   prefix: '',
   safelist: [
@@ -95,8 +96,8 @@ export default {
         },
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-montserrat)'],
+        sans: ['var(--font-montserrat)'],
       },
       keyframes: {
         'accordion-down': {
@@ -112,11 +113,15 @@ export default {
         DEFAULT: {
           css: [
             {
-              '--tw-prose-body': 'var(--text)',
+              '--tw-prose-body': 'rgb(2, 8, 23)',
+              '--tw-prose-invert-body': 'rgb(248, 250, 252)',
               '--tw-prose-headings': 'var(--text)',
               h1: {
                 fontWeight: 'normal',
                 marginBottom: '0.25em',
+              },
+              'h1, h2, h3, h4, h5, h6': {
+                fontFamily: 'LemonMilk',
               },
             },
           ],
@@ -150,3 +155,5 @@ export default {
     },
   },
 }
+
+export default config

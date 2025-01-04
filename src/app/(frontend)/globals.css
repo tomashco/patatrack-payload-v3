@@ -9,6 +9,9 @@
   font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 @layer base {
 
   h1,
@@ -51,6 +54,7 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.2rem;
+    --font-montserrat: 'Montserrat';
 
     --success: 196 52% 74%;
     --warning: 34 89% 85%;
@@ -60,7 +64,6 @@
   [data-theme='dark'] {
     --background: 0 0% 0%;
     --foreground: 210 40% 98%;
-
     --card: 0 0% 4%;
     --card-foreground: 210 40% 98%;
 
