@@ -44,7 +44,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
           <div className={`max-w-[48rem] flex items-center ${textAlign}`}>
             {richText && (
               <RichText
-                className="mb-0 lg:[&>h1]:text-[6.5rem] lg:[&>p]:text-[1.5rem] [&>h1>a]:no-underline [&>h1]:font-['LemonMilk Medium'] [&>h1]:leading-none"
+                className="mb-0 lg:[&>h1]:text-[6.5rem] [&>h1]:leading-none [&>h2>a]:no-underline [&>h2]:text-[3.5rem] lg:[&>p]:text-[1.5rem]"
                 data={richText}
                 enableGutter={false}
               />

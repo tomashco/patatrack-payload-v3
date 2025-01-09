@@ -120,10 +120,10 @@ const config = {
                 fontWeight: 'normal',
                 marginBottom: '0.25em',
               },
-              'h1, h2': {
+              h1: {
                 fontFamily: 'LemonMilk Medium',
               },
-              'h3, h4, h5, h6': {
+              'h2, h3, h4, h5, h6': {
                 fontFamily: 'LemonMilk Light',
               },
             },
