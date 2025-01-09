@@ -163,10 +163,17 @@ export const FormBlock: React.FC<
         <div className="p-4 lg:p-6 relative">
           <FormProvider {...formMethods}>
             {!isLoading && hasSubmitted && confirmationType === 'message' && (
-              <RichText data={confirmationMessage} />
+              <RichText
+                className="dark:text-white z-10 relative text-center"
+                data={confirmationMessage}
+              />
             )}
-            {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-            {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+            {isLoading && !hasSubmitted && (
+              <p className="dark:text-white z-10 relative text-center">Loading, please wait...</p>
+            )}
+            {error && (
+              <div className="text-red-500 relative z-10 text-center [text-shadow:_0_0_3px_rgb(0_0_0_/_100%)] font-bold">{`${error.status || '500'}: ${error.message || ''}`}</div>
+            )}
             {!hasSubmitted && (
               <form
                 className="flex flex-col items-center relative z-10"
