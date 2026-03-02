@@ -1,0 +1,13 @@
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+
+export async function up({ db }: MigrateUpArgs): Promise<void> {
+  await db.execute(sql`
+    ALTER TABLE "forms_blocks_select" ADD COLUMN IF NOT EXISTS "placeholder" varchar;
+  `)
+}
+
+export async function down({ db }: MigrateDownArgs): Promise<void> {
+  await db.execute(sql`
+    ALTER TABLE "forms_blocks_select" DROP COLUMN IF EXISTS "placeholder";
+  `)
+}

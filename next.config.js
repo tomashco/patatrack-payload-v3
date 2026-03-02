@@ -19,6 +19,7 @@ const nextConfig = {
         }
       }),
     ],
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
   },
   reactStrictMode: true,
   redirects,
