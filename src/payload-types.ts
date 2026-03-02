@@ -199,6 +199,7 @@ export interface Page {
       }
     | ArchiveBlock
     | FormBlock
+    | EmbedBlock
   )[];
   meta?: {
     title?: string | null;
@@ -740,6 +741,24 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmbedBlock".
+ */
+export interface EmbedBlock {
+  /**
+   * The URL to embed (e.g. https://moduli.golee.it/...)
+   */
+  url: string;
+  height?: number | null;
+  /**
+   * Accessible title for the embed
+   */
+  title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'embed';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -950,6 +969,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        embed?: T | EmbedBlockSelect<T>;
       };
   meta?:
     | T
@@ -1053,6 +1073,17 @@ export interface FormBlockSelect<T extends boolean = true> {
   media?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmbedBlock_select".
+ */
+export interface EmbedBlockSelect<T extends boolean = true> {
+  url?: T;
+  height?: T;
+  title?: T;
   id?: T;
   blockName?: T;
 }
