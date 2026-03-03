@@ -6,6 +6,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { instagramPlugin } from 'payload-instagram-plugin'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
@@ -85,6 +86,7 @@ export default buildConfig({
   globals: [Header, Footer],
   plugins: [
     ...plugins,
+    instagramPlugin({ enabled: true }),
     s3Storage({
       collections: {
         media: true,

@@ -76,6 +76,7 @@ export interface Config {
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
+    'instagram-posts': InstagramPost;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
+    'instagram-posts': InstagramPostsSelect<false> | InstagramPostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -104,10 +106,14 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    apikeys: Apikey;
+    instagramConfig: InstagramConfig;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    apikeys: ApikeysSelect<false> | ApikeysSelect<true>;
+    instagramConfig: InstagramConfigSelect<false> | InstagramConfigSelect<true>;
   };
   locale: null;
   widgets: {
@@ -832,6 +838,29 @@ export interface Search {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "instagram-posts".
+ */
+export interface InstagramPost {
+  id: string;
+  media_type?: string | null;
+  media_url?: string | null;
+  permalink?: string | null;
+  caption?: string | null;
+  username?: string | null;
+  timestamp?: string | null;
+  children?:
+    | {
+        id?: string | null;
+        media_type?: string | null;
+        media_url?: string | null;
+        permalink?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -889,6 +918,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: number | Search;
+      } | null)
+    | ({
+        relationTo: 'instagram-posts';
+        value: string | InstagramPost;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1445,6 +1478,29 @@ export interface SearchSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "instagram-posts_select".
+ */
+export interface InstagramPostsSelect<T extends boolean = true> {
+  id?: T;
+  media_type?: T;
+  media_url?: T;
+  permalink?: T;
+  caption?: T;
+  username?: T;
+  timestamp?: T;
+  children?:
+    | T
+    | {
+        id?: T;
+        media_type?: T;
+        media_url?: T;
+        permalink?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -1543,6 +1599,27 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "apikeys".
+ */
+export interface Apikey {
+  id: number;
+  refreshToken?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "instagramConfig".
+ */
+export interface InstagramConfig {
+  id: number;
+  appId?: string | null;
+  appSecret?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1583,6 +1660,27 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "apikeys_select".
+ */
+export interface ApikeysSelect<T extends boolean = true> {
+  refreshToken?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "instagramConfig_select".
+ */
+export interface InstagramConfigSelect<T extends boolean = true> {
+  appId?: T;
+  appSecret?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -92,6 +92,9 @@ importers:
       payload-admin-bar:
         specifier: ^1.0.6
         version: 1.0.7(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      payload-instagram-plugin:
+        specifier: ^0.2.1
+        version: 0.2.1(@tanstack/react-query@5.90.21(react@19.2.4))(payload@3.78.0(graphql@16.13.0)(typescript@5.7.2))
       prism-react-renderer:
         specifier: ^2.3.1
         version: 2.4.1(react@19.2.4)
@@ -2146,6 +2149,14 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
+  '@tanstack/query-core@5.90.20':
+    resolution: {integrity: sha512-OMD2HLpNouXEfZJWcKeVKUgQ5n+n3A2JFmBaScpNDUqSrQSjiveC7dKMe53uJUg1nDG16ttFPz2xfilz6i2uVg==}
+
+  '@tanstack/react-query@5.90.21':
+    resolution: {integrity: sha512-0Lu6y5t+tvlTJMTO7oh5NSpJfpg/5D41LlThfepTixPYkJ0sE2Jj0m0f6yYqujBwIXlId87e234+MxG3D3g7kg==}
+    peerDependencies:
+      react: ^18 || ^19
+
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
 
@@ -3988,6 +3999,12 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  payload-instagram-plugin@0.2.1:
+    resolution: {integrity: sha512-bC3Sl++5aNoh9Mmo6Fc/K85D7TLWoEDrwSAdDmWjRCC9ryX5nBOYJuGNlZXunVhVNPvu7Wnt9R6k9K18g15Z5w==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.40.0
+      payload: ^3.0.0
 
   payload@3.78.0:
     resolution: {integrity: sha512-vRQbuo9W+qDuHLw2jRPDBzBf6IERC/GuN6BHRMdx/fHyRxnVucTN3RcwefTYi/sW0y7gRDn41DbwFvXiT4soBA==}
@@ -7407,6 +7424,13 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.19(tsx@4.21.0)
 
+  '@tanstack/query-core@5.90.20': {}
+
+  '@tanstack/react-query@5.90.21(react@19.2.4)':
+    dependencies:
+      '@tanstack/query-core': 5.90.20
+      react: 19.2.4
+
   '@tokenizer/token@0.3.0': {}
 
   '@tybys/wasm-util@0.10.1':
@@ -9513,6 +9537,11 @@ snapshots:
     dependencies:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
+
+  payload-instagram-plugin@0.2.1(@tanstack/react-query@5.90.21(react@19.2.4))(payload@3.78.0(graphql@16.13.0)(typescript@5.7.2)):
+    dependencies:
+      '@tanstack/react-query': 5.90.21(react@19.2.4)
+      payload: 3.78.0(graphql@16.13.0)(typescript@5.7.2)
 
   payload@3.78.0(graphql@16.13.0)(typescript@5.7.2):
     dependencies:
