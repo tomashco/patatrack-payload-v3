@@ -9,6 +9,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { EmbedBlock } from '@/blocks/Embed/Component'
+import { FestivalRegistrationBlock } from '@/blocks/FestivalRegistration/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -17,6 +18,7 @@ const blockComponents = {
   embed: EmbedBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  festivalRegistration: FestivalRegistrationBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -42,6 +44,7 @@ export const RenderBlocks: React.FC<{
                   data-theme={blockType === 'cta' ? 'dark' : 'light'} // fix theme to dark for all blocks
                   key={index}
                 >
+                  {/* @ts-expect-error disableInnerContainer is only consumed by MediaBlock; other blocks safely ignore it */}
                   <Block {...block} disableInnerContainer />
                 </div>
               )

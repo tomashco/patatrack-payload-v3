@@ -5,7 +5,11 @@ import RichText from '@/components/RichText'
 import { CheckoutButton } from './CheckoutButton'
 import { TIERS } from './tiers'
 
-export const FestivalRegistrationBlock: React.FC<FestivalRegistrationBlockProps> = ({
+type Props = FestivalRegistrationBlockProps & {
+  disableInnerContainer?: boolean
+}
+
+export const FestivalRegistrationBlock: React.FC<Props> = ({
   heading,
   description,
 }) => {
