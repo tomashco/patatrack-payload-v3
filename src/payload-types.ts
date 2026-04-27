@@ -206,6 +206,7 @@ export interface Page {
     | ArchiveBlock
     | FormBlock
     | EmbedBlock
+    | FestivalRegistrationBlock
   )[];
   meta?: {
     title?: string | null;
@@ -765,6 +766,37 @@ export interface EmbedBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FestivalRegistrationBlock".
+ */
+export interface FestivalRegistrationBlock {
+  /**
+   * Optional title shown above the tier cards.
+   */
+  heading?: string | null;
+  /**
+   * Optional intro copy shown above the tier cards.
+   */
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'festivalRegistration';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1003,6 +1035,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         embed?: T | EmbedBlockSelect<T>;
+        festivalRegistration?: T | FestivalRegistrationBlockSelect<T>;
       };
   meta?:
     | T
@@ -1117,6 +1150,16 @@ export interface EmbedBlockSelect<T extends boolean = true> {
   url?: T;
   height?: T;
   title?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FestivalRegistrationBlock_select".
+ */
+export interface FestivalRegistrationBlockSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
   id?: T;
   blockName?: T;
 }

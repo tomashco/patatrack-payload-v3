@@ -8,6 +8,7 @@ import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { Embed } from '../../blocks/Embed/config'
+import { FestivalRegistration } from '../../blocks/FestivalRegistration/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -76,7 +77,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Embed],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Embed, FestivalRegistration],
               required: true,
               admin: {
                 initCollapsed: true,

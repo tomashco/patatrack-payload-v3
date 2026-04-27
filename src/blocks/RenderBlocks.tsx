@@ -42,7 +42,6 @@ export const RenderBlocks: React.FC<{
                   data-theme={blockType === 'cta' ? 'dark' : 'light'} // fix theme to dark for all blocks
                   key={index}
                 >
-                  {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>
               )
