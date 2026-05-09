@@ -18,6 +18,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'AthenaVKF';
+  src: url('/fonts/AthenaVKF.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 @layer base {
 
