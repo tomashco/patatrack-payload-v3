@@ -5,6 +5,7 @@ node_modules
 .env
 .next
 .vercel
+*.tsbuildinfo
 
 .pnpm-store
 
@@ -15,3 +16,5 @@ public/robots.txt
 public/sitemap*.xml
 
 certificates
+
+inspiration
