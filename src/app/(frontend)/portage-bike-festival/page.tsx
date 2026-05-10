@@ -16,6 +16,14 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 const SLUG = 'portage-bike-festival'
 
+const PURPLE = '#322250'
+
+const sponsors = [
+  { name: 'Workless Collective', url: '#', logo: '' },
+  { name: 'Patatrack', url: '#', logo: '' },
+  { name: 'Capanna Mautino', url: '#', logo: '' },
+]
+
 export default async function Page() {
   const { isEnabled: draft } = await draftMode()
   const url = '/' + SLUG
@@ -29,28 +37,114 @@ export default async function Page() {
   const { hero, layout } = page
 
   return (
-    <article className="pt-16">
+    <article>
       <PageClient />
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
-      <header className="container py-12 text-center">
+      {/* Top section: heading + CTA + tagline over portage-background-top.webp */}
+      <section className="relative overflow-hidden">
         <img
-          src="/logo/PORTAGE-Logotipo_purple.svg"
-          alt="Portage"
-          className="mx-auto mb-6 h-32 w-auto md:h-40"
+          src="/api/media/file/portage-background-top.webp"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover object-bottom"
         />
-        <h1
-          className="text-5xl tracking-tight md:text-6xl"
-          style={{ fontFamily: '"AthenaVKF", sans-serif', color: '#322250' }}
-        >
-          Bike Festival
-        </h1>
-      </header>
+        <div className="relative">
+          <div className="container py-8 md:py-12">
+            {/* Heading row: date | logo | location */}
+            <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-6">
+              <div
+                className="flex-1 text-center text-3xl leading-tight md:pt-4 md:text-right md:text-4xl"
+                style={{ fontFamily: `"AthenaVKF", sans-serif`, color: PURPLE }}
+              >
+                27 — 28
+                <br />
+                giugno
+              </div>
+              <img
+                src="/logo/PORTAGE-Logo_purple.svg"
+                alt="Portage"
+                className="h-[28rem] w-auto flex-shrink-0 md:h-[28rem] lg:h-[32rem]"
+              />
+              <div
+                className="flex-1 text-center text-3xl leading-tight md:pt-4 md:text-left md:text-4xl"
+                style={{ fontFamily: `"AthenaVKF", sans-serif`, color: PURPLE }}
+              >
+                Capanna Mautino
+                <br />
+                Bousson — Cesana
+                <br />
+                Torinese (TO)
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-12 flex justify-center md:mt-20">
+              <a
+                href="#iscrizione"
+                className="rounded-full px-14 py-5 text-xl font-semibold text-white shadow-md transition hover:opacity-90"
+                style={{ backgroundColor: PURPLE }}
+              >
+                Iscriviti
+              </a>
+            </div>
+
+            {/* Tagline below CTA */}
+            <p
+              className="mt-6 text-center text-3xl leading-tight md:mt-8 md:text-4xl"
+              style={{ fontFamily: `"AthenaVKF", sans-serif`, color: PURPLE }}
+            >
+              (not) just another gravel gathering
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom section: sponsors anchored at bottom of portage-background-bottom.webp */}
+      <section className="relative grid">
+        <img
+          src="/api/media/file/portage-background-bottom.webp"
+          alt=""
+          aria-hidden
+          className="col-start-1 row-start-1 block h-auto w-full"
+        />
+        <div className="col-start-1 row-start-1 flex flex-col justify-end">
+          <div className="container pb-6 text-center md:pb-12">
+            <h2 className="mb-4 text-sm uppercase tracking-widest text-gray-700 md:mb-8">
+              con il supporto di
+            </h2>
+            <div className="grid grid-cols-3 items-center gap-3 md:gap-16">
+              {sponsors.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.url}
+                  className="flex justify-center opacity-80 transition hover:opacity-100"
+                >
+                  {s.logo ? (
+                    <img
+                      src={s.logo}
+                      alt={s.name}
+                      className="h-10 w-auto grayscale transition hover:grayscale-0 md:h-16"
+                    />
+                  ) : (
+                    <div className="flex h-12 w-full items-center justify-center rounded border-2 border-dashed border-gray-400 bg-white/70 px-1 text-center text-[9px] uppercase tracking-wide text-gray-600 md:h-20 md:px-4 md:text-xs">
+                      {s.name}
+                    </div>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <RenderHero {...hero} />
-      <div className="[&_.container]:max-w-none [&_.container]:px-0 [&>*:last-child_.container]:mb-0">
+      <div
+        id="iscrizione"
+        className="scroll-mt-16 [&_.container]:max-w-none [&_.container]:px-0 [&>*:last-child_.container]:mb-0"
+      >
         <RenderBlocks blocks={layout} />
       </div>
     </article>
