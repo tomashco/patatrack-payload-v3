@@ -124,9 +124,6 @@ export default async function Page() {
         />
         <div className="col-start-1 row-start-1 flex flex-col justify-end">
           <div className="container pb-6 text-center md:pb-12">
-            <h2 className="mb-4 text-sm uppercase tracking-widest text-gray-700 md:mb-8">
-              con il supporto di
-            </h2>
             <div className="grid grid-cols-3 items-center gap-3 md:gap-16">
               {sponsors.map((s) => (
                 <div key={s.name} className="flex justify-center">
