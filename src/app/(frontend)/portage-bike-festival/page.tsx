@@ -19,9 +19,21 @@ const SLUG = 'portage-bike-festival'
 const PURPLE = '#322250'
 
 const sponsors = [
-  { name: 'Workless Collective', url: '#', logo: '' },
-  { name: 'Patatrack', url: '#', logo: '' },
-  { name: 'Capanna Mautino', url: '#', logo: '' },
+  {
+    name: 'Workless Collective',
+    url: '#',
+    logo: '/api/media/file/logo-workless-black-300x300.png',
+  },
+  {
+    name: 'Patatrack',
+    url: '#',
+    logo: '/api/media/file/Patatrack-logo-black-300x288.png',
+  },
+  {
+    name: 'Capanna Mautino',
+    url: '#',
+    logo: '/api/media/file/logo-capanna-mautino-300x348.webp',
+  },
 ]
 
 export default async function Page() {
@@ -117,23 +129,15 @@ export default async function Page() {
             </h2>
             <div className="grid grid-cols-3 items-center gap-3 md:gap-16">
               {sponsors.map((s) => (
-                <a
-                  key={s.name}
-                  href={s.url}
-                  className="flex justify-center opacity-80 transition hover:opacity-100"
-                >
+                <div key={s.name} className="flex justify-center">
                   {s.logo ? (
-                    <img
-                      src={s.logo}
-                      alt={s.name}
-                      className="h-10 w-auto grayscale transition hover:grayscale-0 md:h-16"
-                    />
+                    <img src={s.logo} alt={s.name} className="h-20 w-auto md:h-32" />
                   ) : (
                     <div className="flex h-12 w-full items-center justify-center rounded border-2 border-dashed border-gray-400 bg-white/70 px-1 text-center text-[9px] uppercase tracking-wide text-gray-600 md:h-20 md:px-4 md:text-xs">
                       {s.name}
                     </div>
                   )}
-                </a>
+                </div>
               ))}
             </div>
           </div>
